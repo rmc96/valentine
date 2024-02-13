@@ -1,0 +1,698 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-color: #000;
+}
+
+body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--dark-color);
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.night {
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  filter: blur(0.1vmin);
+  background-image: radial-gradient(ellipse at top, transparent 0%, var(--dark-color)), radial-gradient(ellipse at bottom, var(--dark-color), rgba(145, 233, 255, 0.2)), repeating-linear-gradient(220deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(189deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), repeating-linear-gradient(148deg, rgb(0, 0, 0) 0px, rgb(0, 0, 0) 19px, transparent 19px, transparent 22px), linear-gradient(90deg, rgb(7, 107, 42), rgb(240, 240, 240));
+}
+
+/* balloon animations */
+/* style para el message de San valentine */
+.valentine-message {
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg) scale(0.8); /* add initial rotation */
+  z-index: 1; /* above the flowers */
+  opacity: 0; /* hidden first */
+  animation: fadeInAndPulse 5s ease infinite; /* Animation para appears y pulsar */
+}
+
+
+/* Animation para appears y pulsar */
+@keyframes fadeInAndPulse {
+  0% {
+      opacity: 1;
+      transform: translateX(-50%) rotate(-10deg) scale(0.8); /* starts más small y rote */
+  }
+  50% {
+      opacity: 1;
+      transform: translateX(-50%) rotate(10deg) scale(1.1); /* Scalar y rote towards la half */
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(-50%) rotate(-10deg) scale(0.8); /* go back a size y rote original */
+  }
+}
+
+/* style para los balloon de heart */
+.balloons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Para que los balloon no block clicks */
+}
+
+.balloon {
+  position: absolute;
+  background-color: #FF3366; /* change color to pink */
+  background: linear-gradient(135deg, #FF3366 50%, transparent 50%);
+  border-radius: 50% 50% 0 0;
+  opacity: 0;
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Animation para make float los balloon */
+@keyframes float {
+  0% {
+    /* transform: translate(-50%, 0) rotate(0); */
+    transform: scale(1) rotate(75deg) rotateX(10deg) rotateY(-200deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -100vh) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0) rotate(0);
+    background-color: #4b242d ;
+    opacity: 0;
+  }
+}
+/* Adjust animation delay for each balloon */
+.balloon:nth-child(1) {
+  animation-delay: 1s; /* Adjust the delay time */
+}
+.balloon:nth-child(2) {
+  animation-delay: 5s; /* Adjust the delay time */
+}
+
+.balloon:nth-child(3) {
+  animation-delay: 3s; /* Adjust the delay time */
+}
+.balloon:nth-child(4) {
+  animation-delay: 4s; /* Adjust the delay time */
+}
+
+.balloon--1{
+  left: 50%;
+  top: 90%;
+}
+
+.balloon--2{
+  left: 80%;
+  top: 60%;
+}
+
+.balloon--3{
+  left: 30%;
+  top: 80%;
+}
+.balloon--4{
+  left: 10%;
+  top: 90%;
+}
+
+.balloon::before,
+.balloon::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background-color: #FF3366;
+  border-radius: 80%;
+}
+ 
+.balloon::before {
+  left: -25px;
+  transform: rotate(135deg);
+}
+
+.balloon::after {
+  left: 2px;
+  transform: rotate(-135deg);
+} 
+
+
+.silhouette {
+  position: relative;
+  width: 100px;
+  height: 200px;
+}
+
+.head, .torso, .arm-left, .arm-right, .leg-left, .leg-right {
+  position: absolute;
+  background-color: black;
+}
+
+.head {
+  top: 10px;
+  left: 40px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.torso {
+  top: 30px;
+  left: 45px;
+  width: 10px;
+  height: 60px;
+}
+
+.arm-left {
+  top: 40px;
+  left: 35px;
+  width: 10px;
+  height: 40px;
+  transform: rotate(45deg);
+}
+
+.arm-right {
+  top: 40px;
+  left: 55px;
+  width: 10px;
+  height: 40px;
+  transform: rotate(-45deg);
+}
+
+.leg-left, .leg-right {
+  top: 90px;
+  width: 5px;
+  height: 60px;
+}
+
+.leg-left {
+  left: 42.5px;
+  transform: rotate(30deg);
+}
+
+.leg-right {
+  left: 52.5px;
+  transform: rotate(-30deg);
+}
+
+/* .cartoon */
+
+.cartoon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.people-1 {
+  top: 80%;
+  left: 40%;
+}
+.people-2 {
+  top: 80%;
+  left: 60%;
+}
+.cartoon div {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.b {
+  border: 0.75vmin solid black;
+}
+
+.r {
+  border-radius: 100%;
+}
+
+.hb::before,
+.ha::after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+/****/
+html, body {
+  overflow: hidden;
+}
+
+.people-1 {
+  --skin: #fca; 
+  --line: #9639; 
+  --shadow: rgba(80,0,0,0.075);
+  --hair: #630;
+  --shirt: #887389;
+  --animation: "eyemove"; /* replace with eyemove for eyes animation; */
+  width: 80vmin;
+  height: 80vmin;
+}
+
+.people-2 {
+  --skin: #fca; 
+  --line: rgba(236, 65, 50, 0.6); 
+  --shadow: rgba(80,0,0,0.075);
+  --hair: rgb(38, 36, 34);
+  --shirt: #ee95c7;
+  --animation: "eyemove"; /* replace with eyemove for eyes animation; */
+  width: 80vmin;
+  height: 80vmin;
+}
+
+.hair-back {
+  width: 30%;
+  height: 20%;
+  background: var(--hair);
+  transform: translate(-50%, 0);
+  clip-path: polygon(-50% 0%, 150% 0%, 150% 100%, 82% 100%, 81% 96%, 80% 100%, 79.5% 98%, 79% 100%, -50% 100%);
+  clip-path: polygon(-50% 0%, 150% 0%, 150% 100%, 100% 100%, 98% 90%, 99.5% 100%, 98% 100%, 97.25% 96%, 97.5% 99.75%, 75% 99%, 74.5% 98%, 74% 99%, 50% 98%, 10% 99.5%, 9.75% 96%, 9.5% 99.5%, -50% 100%);
+  box-shadow: inset 0 0 0 100in rgba(0,0,0,0.2);
+}
+
+.hair_1{
+  left: 50%;
+  top: -7%;
+  height: 30%;
+  border-radius: 40%;
+}
+.hair_2{
+
+  left: 35%;
+  top: 23%;
+  height: 28%;
+  /* border-radius: 0% 40% 0% 0%; */
+  border-radius: 40% 40% 0% 0%;
+  animation: hairSwing 3s ease-in-out infinite alternate;
+}
+
+
+.hair_2::before {
+  width: 15%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 0 100in rgba(0,0,0,0.2), 5vmin 0 0 5vmin var(--hair);
+  left: -15%;
+  top: 5%;
+  clip-path: polygon(50% 50%, 150% 50%, 150% 100%, 50% 100%);
+}
+
+.hair_2::after {
+  width: 15%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow:  0 0 0 100in rgba(0,0,0,0.2), -5vmin 0 0 5vmin var(--hair);
+  right: -15%;
+  top: 0%;
+  clip-path: polygon(-50% 50%, 50% 50%, 50% 100%, -50% 100%);
+}
+
+.hair_1::before {
+  width: 15%;
+  height: 100%;
+  border-radius: 0 0%;
+  left: -15%;
+  top: 5%;
+}
+.hair_1::after {
+  width: 15%;
+  height: 100%;
+  border-radius:0%;
+  right: -15%;
+  top: 0%;
+}
+
+.face_1 {
+  width: 27%;
+  height: 23%;
+  background: var(--skin);
+  border-radius: 60% 60% 100% 100% / 100% 100% 60% 60%;
+  transform: translate(-50%, 0);
+  left: 50%;
+  top: 0%;
+}
+
+.face {
+  width: 25%;
+  height: 20%;
+  background: var(--skin);
+  border-radius: 60% 60% 100% 100% / 100% 100% 60% 60%;
+  transform: translate(-50%, 0);
+  left: 50%;
+  top: 30%;
+}
+
+.nose {
+  width: 1%;
+  height: 2%;
+  border-color: var(--line);
+  border-left: 0.25vmin solid transparent;
+  top: 64%;
+  left: 53%;
+  transform: translate(-50%, 0) rotate(-35deg);
+}
+
+
+.mouth {
+  width: 15%;
+  height: 15%;
+  border-color: transparent;
+  border-bottom: 0.75vmin solid var(--line);
+  border-right: 0.25vmin solid transparent;
+  transform: translate(-50%, 0) rotate(30deg);
+  top: 68%;
+  left: 45%;
+}
+
+.eye {
+  width: 18%;
+  height: 28%;
+  background: white;
+  border-radius: 100% 60% 10% 20% / 100% 60% 100% 40%;
+  top: 30%;
+  left: 22%;
+  overflow: hidden;
+  box-shadow: 0 -0.75vmin var(--shadow);
+  animation: closeEyes 3s alternate infinite;
+}
+
+@keyframes eyemove {
+  from { transform: translate(15%) }
+  to { transform: translate(-15%) }
+}
+@keyframes closeEyes {
+  0% {
+    height: 28%; /* Initial height */
+    top: 30%;
+  }
+  50% {
+    height: 10%; /* Half-closed eyes */
+    top: 50%;
+  }
+  100% {
+    height: 28%; /* Fully open eyes */
+    /* top: 25%; */
+  }
+}
+@keyframes hairSwing {
+  0% {
+    transform: translateX(-2%) rotateZ(-2deg);
+  }
+  50% {
+    transform: translateX(2%) rotateZ(2deg);
+  }
+  100% {
+    transform: translateX(-2%) rotateZ(-2deg);
+  }
+}
+.pupil {
+  width: 3vmin;
+  height: 3vmin;
+  background: #333;
+  bottom: -0.5vmin;
+  right: 0vmin;
+  animation: var(--animation) 1s alternate infinite;
+}
+
+.eye + .eye {
+  left: auto;
+  right: 22%;
+  border-radius:  30% 50% 10% 5%  / 30% 50% 20% 50% ;
+}
+
+.eye + .eye .pupil {
+  left: 1vmin;
+}
+
+.cheek {
+  width: 15%;
+  height: 10%;
+  background: rgba(255,0,0,0.1);
+  filter: blur(5px);
+  top: 60%;
+  left: 15%;
+}
+
+.cheek + .cheek {
+  left: auto;
+  right: 15%;
+}
+
+.ear {
+  width: 4%;
+  height: 6%;
+  background: var(--skin);
+  top:38%;
+  left: 34%;
+  box-shadow: inset -19.75vmin 0 0 -15.5vmin var(--shadow);
+}
+.ear_1 {
+  top:10%;
+  left: 34%;
+}
+
+.ear::after {
+  width: 15%;
+  height: 17%;
+  border-radius: 50%;
+  border: 0.5vmin solid var(--line);
+  border-right: 0.25vmin solid transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, 0) rotate(-10deg);
+}
+
+.ear + .ear {
+  left: auto;
+  right: 35%;
+  box-shadow: inset 19.75vmin 0 0 -15.5vmin var(--shadow);
+}
+
+.ear + .ear::after {
+  left: auto;
+  right: 50%;
+  border: 0.5vmin solid var(--line);
+  border-left: 0.25vmin solid transparent;
+  transform: translate(40%, 0) rotate(10deg);
+}
+
+.neck {
+  width: 8%;
+  height: 20%;
+  background: var(--skin);
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 20% 20% 0 0;
+  box-shadow: inset 0 8.75vmin 0 -4vmin var(--shadow);
+
+}
+
+.neck_1 {
+  top: 20%;
+  left: 50%;
+  width: 10%;
+
+}
+
+.pupil::before {
+  width: 1vmin;
+  height: 1vmin;
+  background: white;
+  border-radius: 50%;
+  top: 0.5vmin;
+  left: 0.5vmin;
+}
+
+.bangs-1 {
+  width: 12%;
+  height: 9%;
+  border-radius: 90% 0 90% 0;
+  background: var(--hair);
+  top: 25%;
+  left: 33%;
+}
+
+.bangha1 {
+  top: -5%;
+  left: 33%;
+}
+.bangha2 {
+  top: 25%;
+  left: 33%;
+}
+.bangs-1::after {
+  width: 130%;
+  height: 120%;
+  right: 5%;
+  border-radius: 50%;
+  top: -20%;
+  box-shadow: 2.5vmin -0.3vmin var(--hair);
+  clip-path: polygon(0% 50%, 10% 50%, 150% 150%, 0% 150%)
+}
+.bangha1::after {
+  width: 130%;
+  height: 120%;
+  right: 5%;
+  border-radius: 50%;
+  top: -20%;
+  box-shadow: 2.5vmin -0.3vmin var(--hair);
+  clip-path: polygon(0% 50%, 150% 50%, 150% 150%, 0% 150%)
+}
+
+.bangs-2 {
+  height: 15%;
+  border-radius: 0 100% 0 90%;
+  background: var(--hair);
+  transform: rotate(-20deg);
+  transform-origin: top left;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 90% 90%, 98% 100%, 0% 100%);
+}
+.bang1{
+  top: -5%;
+  left: 48%;
+  width: 12%;
+}
+.bang2{
+  top: 23%;
+  left: 40%;
+  width: 20%;
+  height: 13%;
+  border-radius:50% 50% 0 0;
+  transform: rotate(-2deg);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 90% 90%, 98% 100%, 0% 100%);
+}
+
+.eyebrow {
+  width: 20%;
+  height: 4%;
+  box-shadow: 0 -0.75vmin 0 0.5vmin rgba(0,0,0,0.2), 0 -0.75vmin 0 0.5vmin var(--hair);
+  top: 23%;
+  left: 20%;
+  transform: rotate(-10deg);
+}
+
+.body {
+  width: 40%;
+  height: 45%;
+  background: var(--skin);
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 55%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+}
+.body_1 {
+  left: 50%;
+  top: 28%;
+  width: 60%;
+  height: 100%;
+}
+
+.body::after {
+  width: 100.25%;
+  height: 100.25%;
+  top: -0.125%;
+  left: -0.125%;
+  background: var(--shirt);
+  border-radius: 50%;
+  clip-path: polygon(0% 0%, 35% 0%, 50% 10%, 65% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.table {
+  bottom: -5%;
+  left: -12%;
+  width: 124%;
+  height: 5%;
+  background: #966f33;
+}
+
+
+.earring {
+  border-color: rgb(249, 246, 233);
+  background-color: gold;
+  width: 0.6vmin;
+  height:0.6vmin; 
+  border: 0.1px solid rgb(20, 20, 20);
+  top: 42%;
+  left: 35%;
+  border-top: 0;
+}
+
+.earring + .earring {
+  left: auto;
+  right: 36%;
+}
+
+.glasses {
+  color: #c9bbad;
+  width: 35%;
+  height: 40%;
+  box-shadow: 0 0.25vmin, -0.25vmin -0.25vmin;
+  top: 25%;
+  left: 13%;
+}
+
+.glasses + .glasses {
+  left: auto;
+  right: 12%;
+  box-shadow: 0 0.25vmin, -0.25vmin -0.25vmin, 0.25vmin -0.33vmin;
+}
+
+.glasses + .glasses::after {
+  width: 30%;
+  height: 50%;
+  border-radius: 50%;
+  border: 0.5vmin solid;
+  border-top-width: 1.25vmin;
+  left: -0.5vmin;
+  transform: translate(-100%, 30%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+}
+
+
+@media screen and (max-width: 600px) {
+  .valentine-message {
+      font-size: 50px;
+  }
+  .people-1{
+    top: 90%;
+    left: 45%;
+  }
+  .people-2{
+    top: 90%;
+    left: 65%;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .valentine-message {
+    top: 10%;
+    font-size: 130px;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .valentine-message {
+      font-size: 50px;
+      padding-top: 3ch;
+  }
+  .people-1{
+    top: 90%;
+    left: 45%;
+  }
+  .people-2{
+    top: 90%;
+    left: 65%;
+  }
+}
