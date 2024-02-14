@@ -351,7 +351,7 @@ html, body {
   background: var(--skin);
   border-radius: 60% 60% 100% 100% / 100% 100% 60% 60%;
   transform: translate(-50%, 0);
-  left: 50%;
+  left: 49.5%;
   top: 30%;
 }
 
@@ -407,17 +407,7 @@ html, body {
     /* top: 25%; */
   }
 }
-@keyframes hairSwing {
-  0% {
-    transform: translateX(-2%) rotateZ(-2deg);
-  }
-  50% {
-    transform: translateX(2%) rotateZ(2deg);
-  }
-  100% {
-    transform: translateX(-2%) rotateZ(-2deg);
-  }
-}
+
 .pupil {
   width: 3vmin;
   height: 3vmin;
@@ -458,10 +448,11 @@ html, body {
   top:38%;
   left: 34%;
   box-shadow: inset -19.75vmin 0 0 -15.5vmin var(--shadow);
+  
 }
 .ear_1 {
   top:10%;
-  left: 34%;
+  left: 33%;
 }
 
 .ear::after {
@@ -471,12 +462,18 @@ html, body {
   border: 0.5vmin solid var(--line);
   border-right: 0.25vmin solid transparent;
   top: 50%;
-  left: 50%;
+  left: 80%;
   transform: translate(-40%, 0) rotate(-10deg);
 }
 
 .ear + .ear {
   left: auto;
+  right: 35%;
+  box-shadow: inset 19.75vmin 0 0 -15.5vmin var(--shadow);
+}
+
+.ear_1 + .ear_1 {
+  left: 63%;
   right: 35%;
   box-shadow: inset 19.75vmin 0 0 -15.5vmin var(--shadow);
 }
@@ -516,7 +513,17 @@ html, body {
   top: 0.5vmin;
   left: 0.5vmin;
 }
-
+@keyframes hairSwing {
+  0% {
+    transform: translateX(-1%) rotateZ(-1deg);
+  }
+  50% {
+    transform: translateX(1%) rotateZ(1deg);
+  }
+  100% {
+    transform: translateX(-1%) rotateZ(-1deg);
+  }
+}
 .bangs-1 {
   width: 12%;
   height: 9%;
@@ -529,6 +536,7 @@ html, body {
 .bangha1 {
   top: -5%;
   left: 33%;
+  animation: hairSwing 3s ease-in-out infinite alternate;
 }
 .bangha2 {
   top: 25%;
@@ -574,6 +582,8 @@ html, body {
   border-radius:50% 50% 0 0;
   transform: rotate(-2deg);
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 90% 90%, 98% 100%, 0% 100%);
+  
+  animation: hairSwing 3s ease-in-out infinite alternate;
 }
 
 .eyebrow {
@@ -661,6 +671,44 @@ html, body {
   transform: translate(-100%, 30%);
   clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 }
+
+.audio-container {
+  opacity: 0; 
+  /* animation: pulse 2s ease-in-out infinite;  */
+}
+audio {
+  /* opacity: 0; */
+  padding: 10px; /* Add padding */
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: rgb(227, 129, 129); 
+  border-radius: 50%; 
+  width: 30px; 
+  height: 30px; 
+  position: relative; 
+  overflow: hidden; 
+}
+/* audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: rgb(227, 129, 129)
+} */
+
+@keyframes pulse {
+  0% {
+    /* transform: scale(1); */
+    opacity: 0.1; 
+  }
+  50% {
+    /* transform: scale(1.1); */
+    opacity: 0.3; 
+  }
+  100% {
+    /* transform: scale(1); */
+    opacity: 0.1; 
+  }
+}
+
 
 
 @media screen and (max-width: 600px) {
