@@ -9,6 +9,12 @@ body {
     width: 100%;
 }
 
+#defaultContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 h1 {
     color: white;
     font-size: 148px;
@@ -26,6 +32,7 @@ button {
     cursor: pointer;
     animation: fadeIn 2s ease forwards; 
 }
+
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -47,6 +54,10 @@ button {
         transform: translateY(0);
     }
 }
+
+
+
+
 /* Responsive */
 @media screen and (max-width: 600px) {
     h1 {
