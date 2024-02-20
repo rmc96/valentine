@@ -338,27 +338,6 @@ body {
 
 
 
-.loading-init {
-  /* Initial styles */
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-.loading-init.fade-out {
-  /* Styles when fading out */
-  opacity: 0;
-}
-
-.stage-container {
-  /* Initial styles */
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.stage-container.appear {
-  /* Styles when appearing */
-  opacity: 1;
-}
 @keyframes slideDown {
   0% {
     opacity: 0;
