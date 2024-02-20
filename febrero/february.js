@@ -5,6 +5,12 @@ console.clear();
 // and snowballs way beyond its intended size. It's a little clunky
 // reading/working on this single file, but here it is anyways :)
 
+var newURL = `/february.html`; // Change this to the desired URL
+history.pushState(null, null, newURL);
+// Optionally, you can also change the document title
+document.title = "home2";
+
+
 const IS_MOBILE = window.innerWidth <= 640;
 const IS_DESKTOP = window.innerWidth > 800;
 const IS_HEADER = IS_DESKTOP && window.innerHeight < 300;
@@ -802,23 +808,23 @@ const shellNames = Object.keys(shellTypes);
 
 function init() {
 	// Remove loading state
-	setTimeout(function() {
-		document.querySelector('.loading-init').classList.add('fade-out');
-	  }, 10000);
+	// setTimeout(function() {
+	// 	document.querySelector('.loading-init').classList.add('fade-out');
+	//   }, 100);
 	  
-	  // After the fade-out animation finishes, remove the loading-init element
-	  document.querySelector('.loading-init').addEventListener('transitionend', function() {
-		this.remove();
+	//   // After the fade-out animation finishes, remove the loading-init element
+	//   document.querySelector('.loading-init').addEventListener('transitionend', function() {
+	// 	this.remove();
 		
-		// Once the loading-init is removed, trigger the appear animation for stage-container
-		document.querySelector('.stage-container').classList.remove('remove');
-		document.querySelector('.stage-container').classList.add('appear');
-	  });
+	// 	// Once the loading-init is removed, trigger the appear animation for stage-container
+	// 	document.querySelector('.stage-container').classList.remove('remove');
+	// 	document.querySelector('.stage-container').classList.add('appear');
+	//   });
 	
-	// Populate dropdowns
-	function setOptionsForSelect(node, options) {
-		node.innerHTML = options.reduce((acc, opt) => acc += `<option value="${opt.value}">${opt.label}</option>`, '');
-	}
+	// // Populate dropdowns
+	// function setOptionsForSelect(node, options) {
+	// 	node.innerHTML = options.reduce((acc, opt) => acc += `<option value="${opt.value}">${opt.label}</option>`, '');
+	// }
 
 	// shell type
 	let options = '';
@@ -2304,8 +2310,11 @@ if (IS_HEADER) {
 	let message =`Happy anniversary mi amor, I wish I could have spent these nearly 30 days together with you.
 			Words seem insufficient to convey the depth of my affection for you. 
 			May our love continue to grow and flourish with each passing day.
-			I think I am falling deeper into you. I think I should walk beside you not in front of you. What did u do to me? maybe ritual in Bolivia? hahaha
-			Happy anniversary!!! I love you and I look forward to spending many more beautiful months by your side.`
+			What did you do to me? hahaha I think I am falling deeper into you. 
+			Espero poder celebrarlo esta y muchos más
+			contigo ya sea lejos al como estamos ahora or together. 
+			I wish we could celebrate together someday and also I wish you love me same or poquito mas que yo hahaha
+			I love you and I look forward to spending many more by your side.`
 	setLoadingStatus(message);
 	setTimeout(() => {
 		soundManager.preload()
