@@ -5,11 +5,6 @@ console.clear();
 // and snowballs way beyond its intended size. It's a little clunky
 // reading/working on this single file, but here it is anyways :)
 
-var newURL = `/february.html`; // Change this to the desired URL
-history.pushState(null, null, newURL);
-// Optionally, you can also change the document title
-document.title = "home2";
-
 
 const IS_MOBILE = window.innerWidth <= 640;
 const IS_DESKTOP = window.innerWidth > 800;
