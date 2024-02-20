@@ -359,3 +359,23 @@ body {
   /* Styles when appearing */
   opacity: 1;
 }
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.loading-init {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  z-index: 9999;
+  padding: 20px;
+  opacity: 0; /* Comienza con una opacidad de 0 */
+  animation: slideDown 3s ease forwards; /* Aplica la animación de slideDown */
+}
