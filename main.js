@@ -1,6 +1,6 @@
 // Function to be executed when the button is clicked
 document.addEventListener('DOMContentLoaded', function(){
-        function buttonClick() {
+        function buttonClick(event) {
 
                 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                 var pages = ["january.html", "february.html", "March", "April", "birthday.html", "June", "July", "August", "September", "October", "November", "December"];
@@ -74,11 +74,12 @@ document.addEventListener('DOMContentLoaded', function(){
                         let random_gif = Math.floor(Math.random() * images.length);
                         gif = images[random_gif];
 
-                        let gifElement = document.createElement("img");
-                        gifElement.src = `img/${gif}`;
-                        gifElement.classList.add("gif-class");
-                        document.getElementById("gifContainer").appendChild(gifElement);
-        
+                        // let gifElement = document.getElementById("img");
+                        // gifElement.src = `img/${gif}`;
+                        // gifElement.classList.add("gif-class");
+                        // document.getElementById("gifContainer").appendChild(gifElement);
+                        let gifElement = document.querySelector(".gif-class");
+                        gifElement.src = `img/${gif}`
                 }
                 // add audio
                 let audioElement = document.createElement("audio");
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 document.getElementById("audioContainer").appendChild(audioElement);
 
 
-                document.getElementById("defaultContainer").remove();
+                document.getElementById("defaultContainer").style.display = "none";
                 let containers = document.getElementsByClassName("container");
                 for (let i = 0; i < containers.length; i++) {
                 containers[i].removeAttribute("hidden");
@@ -101,6 +102,23 @@ document.addEventListener('DOMContentLoaded', function(){
                 defQuote.innerText = `"${quote}"`;
                 document.querySelector("audio").autoplay = true;
 
+
+                
+                var gifContainer = document.getElementById("gifContainer");
+                gifContainer.style.cursor = "pointer";
+                gifContainer.addEventListener("click", buttonClick);
+                var heartIcon = document.createElement("span");
+                heartIcon.innerHTML = "&#10084;"; // Código HTML del corazón, puedes usar una imagen o una clase de icono en lugar de un caracter especial
+               
+                // Ajustar estilos del corazón
+                heartIcon.style.position = "absolute";
+                heartIcon.style.top = (event.clientY-400) + "px"; // Posición vertical del corazón según la posición del clic
+                heartIcon.style.left = (event.clientX-200) + "px"; // Posición horizontal del corazón según la posición del clic
+                heartIcon.style.color = "red"; // Color del corazón
+                heartIcon.style.pointerEvents = "none"; // Evita que el corazón reciba eventos de clic para no interferir con el contenedor de GIF
+        
+                // Añadir el corazón al contenedor de GIF
+                gifContainer.append(heartIcon);
         }
             // Get the button element by its ID
         var button = document.getElementById("click_me");
