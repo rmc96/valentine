@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 var currentDay = currentDate.getDate();
                 var currentMonth = currentDate.getMonth() + 1; // Months are zero-indexed, so we add 1
                 // currentDay = 20;
-                currentMonth = 5
+                // currentMonth = 5
                 if (currentMonth === 2 && currentDay === 14) {
                         // Show a specific message for February 14th
                         var nextMonthIndex = (currentDate.getMonth()) % 12; // Calculate the index of the next month
