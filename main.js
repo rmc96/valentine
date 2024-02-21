@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function(){
                                 "I want to be your favorite hello and your hardest goodbye",
                                 "Loving you is like breathing; I just can't stop.",
                                 "I've never craved someone's presence, the way I crave yours.",
+                                "I miss you today and tomorrow the same",
                                 // Add more messages as needed
                                 ];
                                 //Get a random index to select a message from the array
@@ -74,19 +75,22 @@ document.addEventListener('DOMContentLoaded', function(){
                         let random_gif = Math.floor(Math.random() * images.length);
                         gif = images[random_gif];
 
-                        // let gifElement = document.getElementById("img");
-                        // gifElement.src = `img/${gif}`;
-                        // gifElement.classList.add("gif-class");
-                        // document.getElementById("gifContainer").appendChild(gifElement);
                         let gifElement = document.querySelector(".gif-class");
                         gifElement.src = `img/${gif}`
+                        
                 }
                 // add audio
-                let audioElement = document.createElement("audio");
-                audioElement.src = "src/ifitsnotu.mp3";
-                audioElement.classList.add("audio-class");
-                audioElement.setAttribute("autoplay", "");
-                document.getElementById("audioContainer").appendChild(audioElement);
+                var audioContainer = document.getElementById("audioContainer");
+                var existingAudio = audioContainer.querySelector("audio");
+
+                if (!existingAudio) {
+                        var audioElement = document.createElement("audio");
+                        audioElement.src = "src/ifitsnotu.mp3";
+                        audioElement.classList.add("audio-class");
+                        audioElement.setAttribute("autoplay", "");
+                        audioContainer.appendChild(audioElement);
+                        document.querySelector("audio").autoplay = true;
+                }
 
 
                 document.getElementById("defaultContainer").style.display = "none";
@@ -100,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 
                 defQuote.style.fontSize = "20px"
                 defQuote.innerText = `"${quote}"`;
-                document.querySelector("audio").autoplay = true;
 
 
                 
@@ -108,18 +111,16 @@ document.addEventListener('DOMContentLoaded', function(){
                 gifContainer.style.cursor = "pointer";
                 gifContainer.addEventListener("click", buttonClick);
                 var heartIcon = document.createElement("span");
-                heartIcon.innerHTML = "&#10084;"; // Código HTML del corazón, puedes usar una imagen o una clase de icono en lugar de un caracter especial
-               
-                // Ajustar estilos del corazón
+                heartIcon.innerHTML = "&#10084;"; // heart 
+
+                // heart styles
                 heartIcon.style.position = "absolute";
-                heartIcon.style.top = (event.clientY-400) + "px"; // Posición vertical del corazón según la posición del clic
-                heartIcon.style.left = (event.clientX) + "px"; // Posición horizontal del corazón según la posición del clic
-                heartIcon.style.color = "red"; // Color del corazón
-                // heartIcon.style.opacity = '20%'
+                heartIcon.style.top = (event.clientY-300) + "px"; 
+                heartIcon.style.left = (event.clientX) + "px"; 
+                heartIcon.style.color = "red";
+                heartIcon.style.opacity = '50%'
                 heartIcon.style.fontSize ='20px'
-                heartIcon.style.pointerEvents = "none"; // Evita que el corazón reciba eventos de clic para no interferir con el contenedor de GIF
-        
-                // Añadir el corazón al contenedor de GIF
+                heartIcon.style.pointerEvents = "none"; 
                 gifContainer.append(heartIcon);
         }
             // Get the button element by its ID

@@ -76,7 +76,7 @@ button {
     }
 }
 
-.gif-class, #default_quote {
+.gif-class {
     animation: infiniteLoop 5s infinite; /* 1s puede ser el tiempo que dura tu GIF, ajusta según sea necesario */
 }
 
