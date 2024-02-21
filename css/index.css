@@ -15,7 +15,7 @@ body {
     flex-direction: column;
 }
 
-h1 {
+h1, #gifContainer {
     color: white;
     font-size: 148px;
     text-align: center;
@@ -55,13 +55,10 @@ button {
     }
 }
 
-
-
-
 /* Responsive */
 @media screen and (max-width: 600px) {
     h1 {
-        font-size: 50px;
+        font-size: 15px;
     }
     
     button {

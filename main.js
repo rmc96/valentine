@@ -14,25 +14,19 @@ document.addEventListener('DOMContentLoaded', function(){
                 // Get the day of the month
                 var currentDay = currentDate.getDate();
                 var currentMonth = currentDate.getMonth() + 1; // Months are zero-indexed, so we add 1
-                currentDay = 20;
+                // currentDay = 20;
+                currentMonth = 5
                 if (currentMonth === 2 && currentDay === 14) {
                         // Show a specific message for February 14th
                         var nextMonthIndex = (currentDate.getMonth()) % 12; // Calculate the index of the next month
                         var nextMonthName = pages[nextMonthIndex]; // Get the name of current month from the array                       
-                        window.location.href = "valentine.html";
+                        window.location.href = nextMonthName;//"valentine.html";
 
                 } else if ( currentDay === 20) {
-                        var nextMonthIndex = (currentDate.getMonth()) % 12; // Calculate the index of the next month
-                        var nextMonthName = pages[nextMonthIndex]; // Get the name of current month from the array
-                       
+                        var nextMonthName = pages[currentMonth - 1]; // Get the name of current month from the array
                         window.location.href = nextMonthName;
 
                         
-                }else if (currentDay < 20) {
-                        // Calculate the number of days remaining until the 20th
-                        var daysRemaining = 20 - currentDay;
-                        document.title = "Love is Beautifull"
-                        message = `Owww I didn't know you will visit this page today. Sorry TT remaining ${daysRemaining} days until our anniversary.`;
                 } else {
                         var nextMonthIndex = (currentDate.getMonth() + 1) % 12; // Calculate the index of the next month
                         var nextMonthName = monthNames[nextMonthIndex]; // Get the name of the next month from the array
@@ -47,7 +41,12 @@ document.addEventListener('DOMContentLoaded', function(){
                         // Convert milliseconds to days
                         var daysRemaining = Math.ceil(timeDifference / (1000 * 3600 * 24));
                         message = `There are ${daysRemaining} days remaining until next anniversary. Next anniversary is on ${nextMonthName} 20th.`;
-                
+                        if (currentMonth === 5){
+                                message = `There are ${daysRemaining} days remaining until you BIRTHDAY 🥳 
+                                I am so excited about it 🥰 You know that
+                                your birthday and our anniversary
+                                is the same day omg 🤭🥰.`
+                        }
 
                         var messages = [
                                 "You are my today and all of my tomorrows.",
@@ -62,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function(){
                         var randomIndex = Math.floor(Math.random() * messages.length);
                         quote = messages[randomIndex];
 
-                        var imagenes = [
+                        var images = [
                                 "img1.gif",
                                 "img2.gif",
                                 "img3.gif",
@@ -72,31 +71,39 @@ document.addEventListener('DOMContentLoaded', function(){
                                 "img7.gif"
                         ]
                         // Get a random index to select a message from the array
-                        var randomgif = Math.floor(Math.random() * imagenes.length);
-                        gif = imagenes[randomgif];
+                        let random_gif = Math.floor(Math.random() * images.length);
+                        gif = images[random_gif];
 
-                        var gifElement = document.createElement("img");
-                        // Establecer la fuente del GIF
+                        let gifElement = document.createElement("img");
                         gifElement.src = `img/${gif}`;
-                        // Agregar una clase (opcional)
                         gifElement.classList.add("gif-class");
-                        // Insertar el elemento de imagen en el contenedor
                         document.getElementById("gifContainer").appendChild(gifElement);
-
-                        
+        
                 }
-                document.getElementById("defaultContainer").remove()
-                document.getElementById("randomContainer").removeAttribute("hidden")
-                defMessage.style.fontSize = "30px"
-                defMessage.innerText = message;
-                defQuote.innerText = `"${quote}"`;
+                // add audio
+                let audioElement = document.createElement("audio");
+                audioElement.src = "src/ifitsnotu.mp3";
+                audioElement.classList.add("audio-class");
+                audioElement.setAttribute("autoplay", "");
+                document.getElementById("audioContainer").appendChild(audioElement);
 
+
+                document.getElementById("defaultContainer").remove();
+                let containers = document.getElementsByClassName("container");
+                for (let i = 0; i < containers.length; i++) {
+                containers[i].removeAttribute("hidden");
+                }
+                defMessage.style.fontSize = "15px"
+                defMessage.innerText = message;
+                defMessage.style.textAlign = 'center';
+                
+                defQuote.style.fontSize = "20px"
+                defQuote.innerText = `"${quote}"`;
+                document.querySelector("audio").autoplay = true;
 
         }
-            
             // Get the button element by its ID
-        var button = document.getElementById("clickme");
-            
+        var button = document.getElementById("click_me");
             // Add event listener to the button, listening for "click" event
         button.addEventListener("click", buttonClick);
 })
