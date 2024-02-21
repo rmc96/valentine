@@ -113,8 +113,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 // Ajustar estilos del corazón
                 heartIcon.style.position = "absolute";
                 heartIcon.style.top = (event.clientY-400) + "px"; // Posición vertical del corazón según la posición del clic
-                heartIcon.style.left = (event.clientX-200) + "px"; // Posición horizontal del corazón según la posición del clic
+                heartIcon.style.left = (event.clientX) + "px"; // Posición horizontal del corazón según la posición del clic
                 heartIcon.style.color = "red"; // Color del corazón
+                // heartIcon.style.opacity = '20%'
+                heartIcon.style.fontSize ='20px'
                 heartIcon.style.pointerEvents = "none"; // Evita que el corazón reciba eventos de clic para no interferir con el contenedor de GIF
         
                 // Añadir el corazón al contenedor de GIF
