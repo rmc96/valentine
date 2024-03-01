@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
                         
                 } else {
-                        var nextMonthIndex = (currentDate.getMonth() + 1) % 12; // Calculate the index of the next month
+                        var nextMonthIndex = (currentDate.getMonth()) % 12; // Calculate the index of the next month
                         var nextMonthName = monthNames[nextMonthIndex]; // Get the name of the next month from the array
                         var year = currentDate.getFullYear();
                         if (nextMonthIndex === 0) {
